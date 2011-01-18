@@ -72,11 +72,21 @@
             'name'    : 'defaultvalue-clone-' + (((1+Math.random())*0x10000)|0).toString(16).substring(1)
           });
           
+          // Copy styles (width and height) of the original element 
+          var cssObj = {
+            'background-color' : $input.css('background'),
+            'width' : $input.css('width'),
+            'color' : '#BBB',
+            'height' : $input.css('height')
+          }
+          
+          $el.css(cssObj);
+          
           $el.focus(function(){
           
             // Hide text clone and show real password field
-            $el.hide();
             $input.show();
+            $el.hide();
             
             // Webkit and Moz need some extra time
             // BTW $input.show(0,function(){$input.focus();}); doesn't work.
